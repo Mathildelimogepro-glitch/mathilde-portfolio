@@ -6,7 +6,7 @@
 <title>Mathilde — Communication & Web</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Syne:wght@400;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500&family=Inter:wght@300;400;500;600&family=Syne:wght@400;700;800&display=swap" rel="stylesheet">
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -33,6 +33,76 @@
     overflow-x: hidden;
   }
 
+  /* =====================
+     INTRO ANIMATION
+  ===================== */
+  #intro {
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    background: #0a0a0f;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 32px;
+    transition: transform 1s cubic-bezier(0.76, 0, 0.24, 1);
+  }
+  #intro.hide {
+    transform: translateY(-100%);
+  }
+
+  .intro-badge {
+    width: 72px;
+    height: 72px;
+    border-radius: 50%;
+    border: 1.5px solid rgba(255, 255, 255, 0.75);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 32px;
+    font-weight: 400;
+    color: white;
+    letter-spacing: 0;
+    opacity: 0;
+    transform: scale(0.6);
+    transition: opacity 0.6s ease, transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+  }
+  .intro-badge.show {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  .intro-name {
+    font-family: 'Barbra SemiCondensed', 'Cormorant Garamond', serif;
+    font-size: clamp(44px, 7vw, 100px);
+    font-weight: 300;
+    color: white;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    display: flex;
+    align-items: baseline;
+    line-height: 1;
+  }
+  .intro-letter {
+    display: inline-block;
+    opacity: 0;
+    transform: translateY(18px);
+    transition: opacity 0.35s ease, transform 0.35s cubic-bezier(0.33, 1, 0.68, 1);
+  }
+  .intro-letter.show {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  .intro-space {
+    display: inline-block;
+    width: 0.35em;
+  }
+
+  /* =====================
+     BACKGROUND ORBS
+  ===================== */
   .bg-orbs { position: fixed; inset: 0; pointer-events: none; z-index: 0; overflow: hidden; }
   .orb { position: absolute; border-radius: 50%; filter: blur(100px); opacity: 0.35; }
   .orb-1 { width: 600px; height: 600px; background: var(--rose); top: -150px; right: -100px; animation: drift1 18s ease-in-out infinite; }
@@ -143,7 +213,6 @@
   .project-link { display: inline-flex; align-items: center; gap: 6px; font-size: 13px; color: var(--rose); font-weight: 500; text-decoration: none; margin-top: 14px; transition: gap 0.2s; }
   .project-link:hover { gap: 10px; }
 
-  /* Skills */
   .skills-category { margin-bottom: 40px; }
   .skills-category:last-child { margin-bottom: 0; }
   .skills-category-label {
@@ -158,12 +227,12 @@
     display: flex; align-items: center; justify-content: center;
     font-size: 18px; margin-bottom: 14px;
   }
-  .skill-icon-wrap.blue  { background: rgba(99,179,237,0.15); }
-  .skill-icon-wrap.green { background: rgba(104,211,145,0.15); }
+  .skill-icon-wrap.blue   { background: rgba(99,179,237,0.15); }
+  .skill-icon-wrap.green  { background: rgba(104,211,145,0.15); }
   .skill-icon-wrap.purple { background: rgba(183,148,244,0.15); }
-  .skill-icon-wrap.pink  { background: rgba(255,107,107,0.15); }
-  .skill-icon-wrap.amber { background: rgba(255,179,71,0.15); }
-  .skill-icon-wrap.teal  { background: rgba(79,209,197,0.15); }
+  .skill-icon-wrap.pink   { background: rgba(255,107,107,0.15); }
+  .skill-icon-wrap.amber  { background: rgba(255,179,71,0.15); }
+  .skill-icon-wrap.teal   { background: rgba(79,209,197,0.15); }
   .skill-name { font-size: 15px; font-weight: 600; margin-bottom: 12px; }
   .skill-pills { display: flex; flex-wrap: wrap; gap: 6px; }
   .skill-pill { font-size: 11px; padding: 4px 11px; border-radius: 100px; background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1); color: var(--text-secondary); }
@@ -179,21 +248,14 @@
   .contact-inner .section-body { max-width: 460px; margin: 0 auto 40px; }
   .contact-links { display: flex; justify-content: center; gap: 14px; flex-wrap: wrap; }
 
-  /* Scroll indicator */
   .scroll-link {
     display: flex; flex-direction: column; align-items: center; gap: 8px;
-    text-decoration: none; cursor: pointer;
-    transition: opacity 0.2s;
+    text-decoration: none; cursor: pointer; transition: opacity 0.2s;
   }
   .scroll-link:hover { opacity: 0.7; }
-  .scroll-link span {
-    font-size: 11px; color: var(--text-muted); letter-spacing: 0.08em; text-transform: uppercase;
-  }
+  .scroll-link span { font-size: 11px; color: var(--text-muted); letter-spacing: 0.08em; text-transform: uppercase; }
   .scroll-arrow { animation: bounce 2s ease-in-out infinite; }
-  @keyframes bounce {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(6px); }
-  }
+  @keyframes bounce { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(6px); } }
 
   footer { padding: 40px 0; text-align: center; }
   footer p { font-size: 12px; color: var(--text-muted); }
@@ -213,10 +275,21 @@
     .about-grid { grid-template-columns: 1fr; }
     .hero-stats { gap: 24px; }
     .skills-row { grid-template-columns: 1fr; }
+    .intro-name { font-size: clamp(32px, 10vw, 60px); }
   }
 </style>
 </head>
 <body>
+
+<!-- =====================
+     INTRO ANIMATION
+===================== -->
+<div id="intro">
+  <div class="intro-badge" id="intro-badge">R</div>
+  <div class="intro-name" id="intro-name">
+    <span class="intro-letter">M</span><span class="intro-letter">A</span><span class="intro-letter">T</span><span class="intro-letter">H</span><span class="intro-letter">I</span><span class="intro-letter">L</span><span class="intro-letter">D</span><span class="intro-letter">E</span><span class="intro-space">&nbsp;</span><span class="intro-letter">L</span><span class="intro-letter">I</span><span class="intro-letter">M</span><span class="intro-letter">O</span><span class="intro-letter">G</span><span class="intro-letter">E</span>
+  </div>
+</div>
 
 <div class="bg-orbs">
   <div class="orb orb-1"></div>
@@ -315,71 +388,42 @@
     <div class="about-tag reveal" style="margin-bottom:24px">Réalisations</div>
     <h2 class="section-title reveal" style="margin-bottom:40px">Projets récents</h2>
     <div class="projects-grid">
-
       <div class="glass project-card reveal">
         <div class="project-thumb">⏳</div>
         <div class="project-meta">
-          <div class="project-tags">
-            <span class="tag">Shopify</span>
-            <span class="tag">E-commerce</span>
-            <span class="tag">Migration PrestaShop</span>
-            <span class="tag">Catalogue produits</span>
-          </div>
+          <div class="project-tags"><span class="tag">Shopify</span><span class="tag">E-commerce</span><span class="tag">Migration PrestaShop</span><span class="tag">Catalogue produits</span></div>
           <div class="project-title">Boutique e-commerce — SOVB 3D <span style="font-size:14px;font-weight:500;color:var(--text-muted)">(en cours)</span></div>
           <div class="project-desc">Refonte complète d’une boutique en ligne spécialisée dans les filaments pour imprimantes 3D — migration depuis PrestaShop vers Shopify, intégration du catalogue produits, optimisation de l’expérience d’achat. Projet actuellement en cours de développement.</div>
           <a href="#" class="project-link">Voir le projet →</a>
         </div>
       </div>
-
       <div class="glass project-card reveal">
-        <div class="project-thumb">
-          <img src="fromagerie-blanc.png" alt="Plaquette Fromagerie Blanc">
-        </div>
+        <div class="project-thumb"><img src="fromagerie-blanc.png" alt="Plaquette Fromagerie Blanc"></div>
         <div class="project-meta">
-          <div class="project-tags">
-            <span class="tag">Print</span>
-            <span class="tag">Identité visuelle</span>
-            <span class="tag">Flyer</span>
-          </div>
+          <div class="project-tags"><span class="tag">Print</span><span class="tag">Identité visuelle</span><span class="tag">Flyer</span></div>
           <div class="project-title">Design print & communication locale — Fromagerie Blanc à Parthenay (79)</div>
           <div class="project-desc">Création d’une plaquette tri-volet pour une fromagerie artisanale de Parthenay — mise en page soignée, sélection de visuels appétissants et rédaction des textes. Un support prêt à distribuer, qui donne envie avant même d’entrer dans la boutique.</div>
           <a href="#" class="project-link">Voir le projet →</a>
         </div>
       </div>
-
       <div class="glass project-card reveal">
-        <div class="project-thumb">
-          <img src="comite-fetes-champdeniers.png" alt="Affiche Comité des Fêtes de Champdeniers">
-        </div>
+        <div class="project-thumb"><img src="comite-fetes-champdeniers.png" alt="Affiche Comité des Fêtes de Champdeniers"></div>
         <div class="project-meta">
-          <div class="project-tags">
-            <span class="tag">Affiche</span>
-            <span class="tag">Communication événementielle</span>
-            <span class="tag">Institutionnel</span>
-          </div>
+          <div class="project-tags"><span class="tag">Affiche</span><span class="tag">Communication événementielle</span><span class="tag">Institutionnel</span></div>
           <div class="project-title">Affiche événementielle — Comité des Fêtes de Champdeniers (79)</div>
           <div class="project-desc">Création d’une affiche pour l’assemblée générale d’un comité des fêtes local — identité visuelle joyeuse et accessible, mise en page claire pour un public large. Un support qui donne envie de venir, et qui fait honneur à la vie de la commune.</div>
           <a href="#" class="project-link">Voir le projet →</a>
         </div>
       </div>
-
       <div class="glass project-card reveal">
-        <div class="project-thumb">
-          <img src="atouts-travaux-habitat.png" alt="Site vitrine Atouts Travaux Habitat">
-        </div>
+        <div class="project-thumb"><img src="atouts-travaux-habitat.png" alt="Site vitrine Atouts Travaux Habitat"></div>
         <div class="project-meta">
-          <div class="project-tags">
-            <span class="tag">WordPress</span>
-            <span class="tag">Site vitrine</span>
-            <span class="tag">SEO</span>
-            <span class="tag">Responsive</span>
-          </div>
+          <div class="project-tags"><span class="tag">WordPress</span><span class="tag">Site vitrine</span><span class="tag">SEO</span><span class="tag">Responsive</span></div>
           <div class="project-title">Site vitrine — Atouts Travaux Habitat, générale du bâtiment à La Crèche (79)</div>
           <div class="project-desc">Création d’un site vitrine complet pour une entreprise générale du bâtiment basée à La Crèche — architecture claire, design sobre et professionnel, optimisé pour le référencement local. Un site qui inspire confiance et génère des demandes de devis dès la première visite.</div>
           <a href="#" class="project-link">Voir le projet →</a>
         </div>
       </div>
-
     </div>
   </div>
 </section>
@@ -389,101 +433,61 @@
   <div class="container">
     <div class="about-tag reveal" style="margin-bottom:24px">Stack</div>
     <h2 class="section-title reveal" style="margin-bottom:48px">Outils & compétences</h2>
-
     <div class="skills-category reveal">
       <div class="skills-category-label">Création web & e-commerce</div>
       <div class="skills-row">
         <div class="glass skill-card">
           <div class="skill-icon-wrap blue">🖥️</div>
           <div class="skill-name">Intégration web</div>
-          <div class="skill-pills">
-            <span class="skill-pill blue">HTML</span>
-            <span class="skill-pill blue">CSS</span>
-            <span class="skill-pill blue">JavaScript</span>
-            <span class="skill-pill blue">Responsive</span>
-            <span class="skill-pill blue">GitHub</span>
-          </div>
+          <div class="skill-pills"><span class="skill-pill blue">HTML</span><span class="skill-pill blue">CSS</span><span class="skill-pill blue">JavaScript</span><span class="skill-pill blue">Responsive</span><span class="skill-pill blue">GitHub</span></div>
         </div>
         <div class="glass skill-card">
           <div class="skill-icon-wrap green">🛍️</div>
           <div class="skill-name">E-commerce</div>
-          <div class="skill-pills">
-            <span class="skill-pill green">Shopify</span>
-            <span class="skill-pill green">Liquid</span>
-            <span class="skill-pill green">PrestaShop</span>
-            <span class="skill-pill green">WooCommerce</span>
-          </div>
+          <div class="skill-pills"><span class="skill-pill green">Shopify</span><span class="skill-pill green">Liquid</span><span class="skill-pill green">PrestaShop</span><span class="skill-pill green">WooCommerce</span></div>
         </div>
         <div class="glass skill-card">
           <div class="skill-icon-wrap teal">⚙️</div>
           <div class="skill-name">CMS & no-code</div>
-          <div class="skill-pills">
-            <span class="skill-pill teal">WordPress</span>
-            <span class="skill-pill teal">Elementor</span>
-            <span class="skill-pill teal">GitHub Pages</span>
-          </div>
+          <div class="skill-pills"><span class="skill-pill teal">WordPress</span><span class="skill-pill teal">Elementor</span><span class="skill-pill teal">GitHub Pages</span></div>
         </div>
       </div>
     </div>
-
     <div class="skills-category reveal">
       <div class="skills-category-label">Design & identité visuelle</div>
       <div class="skills-row" style="grid-template-columns: repeat(auto-fit, minmax(260px, 1fr))">
         <div class="glass skill-card">
           <div class="skill-icon-wrap purple">📌</div>
           <div class="skill-name">Design UI & maquettes</div>
-          <div class="skill-pills">
-            <span class="skill-pill purple">Figma</span>
-            <span class="skill-pill purple">Adobe XD</span>
-            <span class="skill-pill purple">Maquettage</span>
-          </div>
+          <div class="skill-pills"><span class="skill-pill purple">Figma</span><span class="skill-pill purple">Adobe XD</span><span class="skill-pill purple">Maquettage</span></div>
         </div>
         <div class="glass skill-card">
           <div class="skill-icon-wrap pink">🎨</div>
           <div class="skill-name">Identité & print</div>
-          <div class="skill-pills">
-            <span class="skill-pill pink">Canva Pro</span>
-            <span class="skill-pill pink">Charte graphique</span>
-            <span class="skill-pill pink">Flyer & plaquette</span>
-            <span class="skill-pill pink">Affiches</span>
-          </div>
+          <div class="skill-pills"><span class="skill-pill pink">Canva Pro</span><span class="skill-pill pink">Charte graphique</span><span class="skill-pill pink">Flyer & plaquette</span><span class="skill-pill pink">Affiches</span></div>
         </div>
       </div>
     </div>
-
     <div class="skills-category reveal">
       <div class="skills-category-label">Communication digitale</div>
       <div class="skills-row">
         <div class="glass skill-card">
           <div class="skill-icon-wrap pink">📱</div>
           <div class="skill-name">Réseaux sociaux</div>
-          <div class="skill-pills">
-            <span class="skill-pill pink">Stratégie éditoriale</span>
-            <span class="skill-pill pink">Création de contenu</span>
-            <span class="skill-pill pink">Planning</span>
-          </div>
+          <div class="skill-pills"><span class="skill-pill pink">Stratégie éditoriale</span><span class="skill-pill pink">Création de contenu</span><span class="skill-pill pink">Planning</span></div>
         </div>
         <div class="glass skill-card">
           <div class="skill-icon-wrap amber">✍️</div>
           <div class="skill-name">Copywriting & SEO</div>
-          <div class="skill-pills">
-            <span class="skill-pill amber">Rédaction web</span>
-            <span class="skill-pill amber">SEO on-page</span>
-            <span class="skill-pill amber">Email marketing</span>
-          </div>
+          <div class="skill-pills"><span class="skill-pill amber">Rédaction web</span><span class="skill-pill amber">SEO on-page</span><span class="skill-pill amber">Email marketing</span></div>
         </div>
         <div class="glass skill-card">
           <div class="skill-icon-wrap teal">📊</div>
           <div class="skill-name">Stratégie digitale</div>
-          <div class="skill-pills">
-            <span class="skill-pill teal">Audit</span>
-            <span class="skill-pill teal">Positionnement</span>
-            <span class="skill-pill teal">Plan d’action</span>
-          </div>
+          <div class="skill-pills"><span class="skill-pill teal">Audit</span><span class="skill-pill teal">Positionnement</span><span class="skill-pill teal">Plan d’action</span></div>
         </div>
       </div>
     </div>
-
   </div>
 </section>
 
@@ -512,6 +516,29 @@
 </footer>
 
 <script>
+  // ---- Intro animation ----
+  (function () {
+    const intro  = document.getElementById('intro');
+    const badge  = document.getElementById('intro-badge');
+    const letters = document.querySelectorAll('#intro-name .intro-letter');
+
+    // 1. Badge pop in
+    setTimeout(() => badge.classList.add('show'), 300);
+
+    // 2. Letters appear one by one
+    letters.forEach((el, i) => {
+      setTimeout(() => el.classList.add('show'), 900 + i * 85);
+    });
+
+    // 3. Slide intro up to reveal the site
+    const exitDelay = 900 + letters.length * 85 + 900;
+    setTimeout(() => {
+      intro.classList.add('hide');
+      setTimeout(() => { intro.style.display = 'none'; }, 1100);
+    }, exitDelay);
+  })();
+
+  // ---- Scroll reveal ----
   const reveals = document.querySelectorAll('.reveal');
   const obs = new IntersectionObserver((entries) => {
     entries.forEach((e, i) => {
