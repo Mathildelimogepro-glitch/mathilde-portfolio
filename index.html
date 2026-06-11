@@ -131,12 +131,36 @@
   .project-link { display: inline-flex; align-items: center; gap: 6px; font-size: 13px; color: var(--rose); font-weight: 500; text-decoration: none; margin-top: 14px; transition: gap 0.2s; }
   .project-link:hover { gap: 10px; }
 
-  .skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 14px; }
+  /* Skills */
+  .skills-category { margin-bottom: 40px; }
+  .skills-category:last-child { margin-bottom: 0; }
+  .skills-category-label {
+    font-size: 11px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase;
+    color: var(--text-muted); margin-bottom: 16px;
+    padding-bottom: 10px; border-bottom: 1px solid var(--glass-border);
+  }
+  .skills-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 14px; }
   .skill-card { padding: 24px 28px; }
-  .skill-icon { font-size: 20px; margin-bottom: 14px; }
-  .skill-name { font-size: 15px; font-weight: 600; margin-bottom: 10px; }
+  .skill-icon-wrap {
+    width: 40px; height: 40px; border-radius: 12px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 18px; margin-bottom: 14px;
+  }
+  .skill-icon-wrap.blue  { background: rgba(99,179,237,0.15); }
+  .skill-icon-wrap.green { background: rgba(104,211,145,0.15); }
+  .skill-icon-wrap.purple { background: rgba(183,148,244,0.15); }
+  .skill-icon-wrap.pink  { background: rgba(255,107,107,0.15); }
+  .skill-icon-wrap.amber { background: rgba(255,179,71,0.15); }
+  .skill-icon-wrap.teal  { background: rgba(79,209,197,0.15); }
+  .skill-name { font-size: 15px; font-weight: 600; margin-bottom: 12px; }
   .skill-pills { display: flex; flex-wrap: wrap; gap: 6px; }
-  .skill-pill { font-size: 11px; padding: 3px 10px; border-radius: 100px; background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1); color: var(--text-secondary); }
+  .skill-pill { font-size: 11px; padding: 4px 11px; border-radius: 100px; background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1); color: var(--text-secondary); }
+  .skill-pill.blue   { background: rgba(99,179,237,0.12); border-color: rgba(99,179,237,0.25); color: rgba(147,210,255,0.9); }
+  .skill-pill.green  { background: rgba(104,211,145,0.12); border-color: rgba(104,211,145,0.25); color: rgba(154,240,180,0.9); }
+  .skill-pill.purple { background: rgba(183,148,244,0.12); border-color: rgba(183,148,244,0.25); color: rgba(210,185,255,0.9); }
+  .skill-pill.pink   { background: rgba(255,107,107,0.12); border-color: rgba(255,107,107,0.25); color: rgba(255,160,130,0.9); }
+  .skill-pill.amber  { background: rgba(255,179,71,0.12); border-color: rgba(255,179,71,0.25); color: rgba(255,210,130,0.9); }
+  .skill-pill.teal   { background: rgba(79,209,197,0.12); border-color: rgba(79,209,197,0.25); color: rgba(130,235,225,0.9); }
 
   .contact-inner { padding: 56px 52px; text-align: center; }
   .contact-inner .section-title { font-size: clamp(32px, 5vw, 52px); }
@@ -163,6 +187,7 @@
     .project-thumb { width: 100%; height: 180px; }
     .about-grid { grid-template-columns: 1fr; }
     .hero-stats { gap: 24px; }
+    .skills-row { grid-template-columns: 1fr; }
   }
 </style>
 </head>
@@ -194,7 +219,7 @@
             <div class="hero-photo-icon">📸</div>
             <div class="hero-photo-hint">Votre photo ici</div>
           </div>
-          <p class="hero-photo-caption">Cycliste, tenniswoman, coureuse : je fonce avec mille idées à l'heure et toujours un cap à suivre.</p>
+          <p class="hero-photo-caption">Cycliste, tenniswoman, coureuse : je fonce avec mille idées à l’heure et toujours un cap à suivre.</p>
         </div>
         <div class="hero-content">
           <div class="hero-eyebrow"><span></span> Mathilde Limoge, freelance web design</div>
@@ -207,7 +232,7 @@
         </div>
       </div>
       <div class="hero-stats">
-        <div><div class="stat-num">3+</div><div class="stat-label">Ans d'expérience</div></div>
+        <div><div class="stat-num">3+</div><div class="stat-label">Ans d’expérience</div></div>
         <div><div class="stat-num">12</div><div class="stat-label">Projets livrés</div></div>
         <div><div class="stat-num">100%</div><div class="stat-label">Clients satisfaits</div></div>
       </div>
@@ -223,13 +248,13 @@
       <div class="glass about-main reveal">
         <div class="about-tag">À propos</div>
         <h2 class="section-title">Créer du sens,<br>pixel par pixel.</h2>
-        <p class="section-body">Salariée dans la tech le jour, freelance web & digital la nuit — je combine la rigueur d'une expérience en entreprise avec la liberté de créer sur mesure pour chaque client. Spécialisée en communication digitale, je transforme des idées en interfaces qui convertissent pour vos clients.</p>
+        <p class="section-body">Salariée dans la tech le jour, freelance web & digital la nuit — je combine la rigueur d’une expérience en entreprise avec la liberté de créer sur mesure pour chaque client. Spécialisée en communication digitale, je transforme des idées en interfaces qui convertissent pour vos clients.</p>
       </div>
       <div class="glass about-card reveal">
         <div class="about-card-icon">🌐</div>
         <div class="about-card-title">Création de site internet, boutique en ligne & intégrations web</div>
         <div class="about-card-subtitle">Votre vitrine digitale, enfin à votre image.</div>
-        <div class="about-card-text">Un site qui vous ressemble, qui se trouve sur Google et qui donne envie de rester — je m'occupe de tout, du design jusqu'à la mise en ligne.</div>
+        <div class="about-card-text">Un site qui vous ressemble, qui se trouve sur Google et qui donne envie de rester — je m’occupe de tout, du design jusqu’à la mise en ligne.</div>
       </div>
       <div class="glass about-card reveal">
         <div class="about-card-icon">✨</div>
@@ -240,14 +265,14 @@
       <div class="glass about-card reveal">
         <div class="about-card-icon">🎨</div>
         <div class="about-card-title">Création de plaquettes & supports print</div>
-        <div class="about-card-subtitle">Parce qu'un beau papier, ça reste.</div>
+        <div class="about-card-subtitle">Parce qu’un beau papier, ça reste.</div>
         <div class="about-card-text">Flyers, brochures, plaquettes commerciales — je crée des supports imprimés soignés qui font bonne impression, au sens propre comme au sens figuré.</div>
       </div>
       <div class="glass about-card reveal">
         <div class="about-card-icon">📱</div>
         <div class="about-card-title">Réseaux sociaux</div>
         <div class="about-card-subtitle">Fini le syndrome de la page blanche.</div>
-        <div class="about-card-text">Stratégie, visuels, planning éditorial : je vous aide à prendre la parole avec confiance sur les réseaux, et à créer une communauté qui s'engage vraiment.</div>
+        <div class="about-card-text">Stratégie, visuels, planning éditorial : je vous aide à prendre la parole avec confiance sur les réseaux, et à créer une communauté qui s’engage vraiment.</div>
       </div>
     </div>
   </div>
@@ -270,7 +295,7 @@
             <span class="tag">Catalogue produits</span>
           </div>
           <div class="project-title">Boutique e-commerce — SOVB 3D <span style="font-size:14px;font-weight:500;color:var(--text-muted)">(en cours)</span></div>
-          <div class="project-desc">Refonte complète d'une boutique en ligne spécialisée dans les filaments pour imprimantes 3D — migration depuis PrestaShop vers Shopify, intégration du catalogue produits, optimisation de l'expérience d'achat. Projet actuellement en cours de développement.</div>
+          <div class="project-desc">Refonte complète d’une boutique en ligne spécialisée dans les filaments pour imprimantes 3D — migration depuis PrestaShop vers Shopify, intégration du catalogue produits, optimisation de l’expérience d’achat. Projet actuellement en cours de développement.</div>
           <a href="#" class="project-link">Voir le projet →</a>
         </div>
       </div>
@@ -286,7 +311,7 @@
             <span class="tag">Flyer</span>
           </div>
           <div class="project-title">Design print & communication locale — Fromagerie Blanc à Parthenay (79)</div>
-          <div class="project-desc">Création d'une plaquette tri-volet pour une fromagerie artisanale de Parthenay — mise en page soignée, sélection de visuels appétissants et rédaction des textes. Un support prêt à distribuer, qui donne envie avant même d'entrer dans la boutique.</div>
+          <div class="project-desc">Création d’une plaquette tri-volet pour une fromagerie artisanale de Parthenay — mise en page soignée, sélection de visuels appétissants et rédaction des textes. Un support prêt à distribuer, qui donne envie avant même d’entrer dans la boutique.</div>
           <a href="#" class="project-link">Voir le projet →</a>
         </div>
       </div>
@@ -302,7 +327,7 @@
             <span class="tag">Institutionnel</span>
           </div>
           <div class="project-title">Affiche événementielle — Comité des Fêtes de Champdeniers (79)</div>
-          <div class="project-desc">Création d'une affiche pour l'assemblée générale d'un comité des fêtes local — identité visuelle joyeuse et accessible, mise en page claire pour un public large. Un support qui donne envie de venir, et qui fait honneur à la vie de la commune.</div>
+          <div class="project-desc">Création d’une affiche pour l’assemblée générale d’un comité des fêtes local — identité visuelle joyeuse et accessible, mise en page claire pour un public large. Un support qui donne envie de venir, et qui fait honneur à la vie de la commune.</div>
           <a href="#" class="project-link">Voir le projet →</a>
         </div>
       </div>
@@ -319,7 +344,7 @@
             <span class="tag">Responsive</span>
           </div>
           <div class="project-title">Site vitrine — Atouts Travaux Habitat, générale du bâtiment à La Crèche (79)</div>
-          <div class="project-desc">Création d'un site vitrine complet pour une entreprise générale du bâtiment basée à La Crèche — architecture claire, design sobre et professionnel, optimisé pour le référencement local. Un site qui inspire confiance et génère des demandes de devis dès la première visite.</div>
+          <div class="project-desc">Création d’un site vitrine complet pour une entreprise générale du bâtiment basée à La Crèche — architecture claire, design sobre et professionnel, optimisé pour le référencement local. Un site qui inspire confiance et génère des demandes de devis dès la première visite.</div>
           <a href="#" class="project-link">Voir le projet →</a>
         </div>
       </div>
@@ -332,29 +357,105 @@
 <section id="skills">
   <div class="container">
     <div class="about-tag reveal" style="margin-bottom:24px">Stack</div>
-    <h2 class="section-title reveal" style="margin-bottom:40px">Outils & compétences</h2>
-    <div class="skills-grid">
-      <div class="glass skill-card reveal">
-        <div class="skill-icon">🖥️</div>
-        <div class="skill-name">Développement</div>
-        <div class="skill-pills"><span class="skill-pill">HTML</span><span class="skill-pill">CSS</span><span class="skill-pill">JavaScript</span><span class="skill-pill">Liquid</span></div>
-      </div>
-      <div class="glass skill-card reveal">
-        <div class="skill-icon">🛍️</div>
-        <div class="skill-name">E-commerce</div>
-        <div class="skill-pills"><span class="skill-pill">Shopify</span><span class="skill-pill">PrestaShop</span><span class="skill-pill">WooCommerce</span></div>
-      </div>
-      <div class="glass skill-card reveal">
-        <div class="skill-icon">🎨</div>
-        <div class="skill-name">Design</div>
-        <div class="skill-pills"><span class="skill-pill">Figma</span><span class="skill-pill">Canva Pro</span><span class="skill-pill">Adobe XD</span></div>
-      </div>
-      <div class="glass skill-card reveal">
-        <div class="skill-icon">📣</div>
-        <div class="skill-name">Communication</div>
-        <div class="skill-pills"><span class="skill-pill">Social media</span><span class="skill-pill">Copywriting</span><span class="skill-pill">Email mktg</span></div>
+    <h2 class="section-title reveal" style="margin-bottom:48px">Outils & compétences</h2>
+
+    <!-- Catégorie 1 -->
+    <div class="skills-category reveal">
+      <div class="skills-category-label">Création web & e-commerce</div>
+      <div class="skills-row">
+        <div class="glass skill-card">
+          <div class="skill-icon-wrap blue">🖥️</div>
+          <div class="skill-name">Intégration web</div>
+          <div class="skill-pills">
+            <span class="skill-pill blue">HTML</span>
+            <span class="skill-pill blue">CSS</span>
+            <span class="skill-pill blue">JavaScript</span>
+            <span class="skill-pill blue">Responsive</span>
+            <span class="skill-pill blue">GitHub</span>
+          </div>
+        </div>
+        <div class="glass skill-card">
+          <div class="skill-icon-wrap green">🛍️</div>
+          <div class="skill-name">E-commerce</div>
+          <div class="skill-pills">
+            <span class="skill-pill green">Shopify</span>
+            <span class="skill-pill green">Liquid</span>
+            <span class="skill-pill green">PrestaShop</span>
+            <span class="skill-pill green">WooCommerce</span>
+          </div>
+        </div>
+        <div class="glass skill-card">
+          <div class="skill-icon-wrap teal">⚙️</div>
+          <div class="skill-name">CMS & no-code</div>
+          <div class="skill-pills">
+            <span class="skill-pill teal">WordPress</span>
+            <span class="skill-pill teal">Elementor</span>
+            <span class="skill-pill teal">GitHub Pages</span>
+          </div>
+        </div>
       </div>
     </div>
+
+    <!-- Catégorie 2 -->
+    <div class="skills-category reveal">
+      <div class="skills-category-label">Design & identité visuelle</div>
+      <div class="skills-row" style="grid-template-columns: repeat(auto-fit, minmax(260px, 1fr))">
+        <div class="glass skill-card">
+          <div class="skill-icon-wrap purple">📌</div>
+          <div class="skill-name">Design UI & maquettes</div>
+          <div class="skill-pills">
+            <span class="skill-pill purple">Figma</span>
+            <span class="skill-pill purple">Adobe XD</span>
+            <span class="skill-pill purple">Maquettage</span>
+          </div>
+        </div>
+        <div class="glass skill-card">
+          <div class="skill-icon-wrap pink">🎨</div>
+          <div class="skill-name">Identité & print</div>
+          <div class="skill-pills">
+            <span class="skill-pill pink">Canva Pro</span>
+            <span class="skill-pill pink">Charte graphique</span>
+            <span class="skill-pill pink">Flyer & plaquette</span>
+            <span class="skill-pill pink">Affiches</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Catégorie 3 -->
+    <div class="skills-category reveal">
+      <div class="skills-category-label">Communication digitale</div>
+      <div class="skills-row">
+        <div class="glass skill-card">
+          <div class="skill-icon-wrap pink">📱</div>
+          <div class="skill-name">Réseaux sociaux</div>
+          <div class="skill-pills">
+            <span class="skill-pill pink">Stratégie éditoriale</span>
+            <span class="skill-pill pink">Création de contenu</span>
+            <span class="skill-pill pink">Planning</span>
+          </div>
+        </div>
+        <div class="glass skill-card">
+          <div class="skill-icon-wrap amber">✍️</div>
+          <div class="skill-name">Copywriting & SEO</div>
+          <div class="skill-pills">
+            <span class="skill-pill amber">Rédaction web</span>
+            <span class="skill-pill amber">SEO on-page</span>
+            <span class="skill-pill amber">Email marketing</span>
+          </div>
+        </div>
+        <div class="glass skill-card">
+          <div class="skill-icon-wrap teal">📊</div>
+          <div class="skill-name">Stratégie digitale</div>
+          <div class="skill-pills">
+            <span class="skill-pill teal">Audit</span>
+            <span class="skill-pill teal">Positionnement</span>
+            <span class="skill-pill teal">Plan d’action</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
   </div>
 </section>
 
@@ -366,7 +467,7 @@
       <h2 class="section-title">Travaillons<br><span style="background:linear-gradient(135deg,var(--rose),var(--orange));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">ensemble.</span></h2>
       <p class="section-body">Un projet e-commerce, une refonte de site, une identité visuelle ? Je suis disponible pour en discuter.</p>
       <div class="contact-links">
-        <a href="mailto:hello@mathilde.fr" class="btn-primary">✉️ M'écrire</a>
+        <a href="mailto:hello@mathilde.fr" class="btn-primary">✉️ M’écrire</a>
         <a href="#" class="btn-ghost">LinkedIn</a>
         <a href="#" class="btn-ghost">📄 CV PDF</a>
       </div>
