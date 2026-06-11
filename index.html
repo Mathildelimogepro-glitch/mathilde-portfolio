@@ -25,7 +25,7 @@
     --glass-bg: rgba(255, 255, 255, 0.07);
     --glass-border: rgba(255, 255, 255, 0.14);
     --glass-hover: rgba(255, 255, 255, 0.11);
-    --text-primary: #FFFFFF;
+    --text-primary: #FFFAF3;
     --text-secondary: rgba(255,255,255,0.6);
     --text-muted: rgba(255,255,255,0.35);
   }
@@ -34,7 +34,7 @@
 
   body {
     font-family: 'Inter', sans-serif;
-    background: #0a0a0f;
+    background: #FF751F;
     color: var(--text-primary);
     min-height: 100vh;
     overflow-x: hidden;
@@ -47,45 +47,28 @@
     position: fixed;
     inset: 0;
     z-index: 9999;
-    background: #0a0a0f;
+    background: #FF751F;
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    gap: 32px;
     transition: transform 1s cubic-bezier(0.76, 0, 0.24, 1);
   }
   #intro.hide {
     transform: translateY(-100%);
   }
 
-  .intro-badge {
-    width: 72px;
-    height: 72px;
-    border-radius: 50%;
-    border: 1.5px solid rgba(255, 255, 255, 0.75);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 32px;
-    font-weight: 400;
-    color: white;
+  .intro-dot {
+    font-size: 0.5em;
+    vertical-align: sub;
     letter-spacing: 0;
-    opacity: 0;
-    transform: scale(0.6);
-    transition: opacity 0.6s ease, transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
-  }
-  .intro-badge.show {
-    opacity: 1;
-    transform: scale(1);
   }
 
   .intro-name {
     font-family: 'Barbra SemiCondensed', 'Cormorant Garamond', serif;
     font-size: clamp(44px, 7vw, 100px);
     font-weight: 300;
-    color: white;
+    color: #FFFAF3;
     letter-spacing: 0.12em;
     text-transform: uppercase;
     display: flex;
@@ -292,9 +275,8 @@
      INTRO ANIMATION
 ===================== -->
 <div id="intro">
-  <div class="intro-badge" id="intro-badge">R</div>
   <div class="intro-name" id="intro-name">
-    <span class="intro-letter">M</span><span class="intro-letter">A</span><span class="intro-letter">T</span><span class="intro-letter">H</span><span class="intro-letter">I</span><span class="intro-letter">L</span><span class="intro-letter">D</span><span class="intro-letter">E</span><span class="intro-space">&nbsp;</span><span class="intro-letter">L</span><span class="intro-letter">I</span><span class="intro-letter">M</span><span class="intro-letter">O</span><span class="intro-letter">G</span><span class="intro-letter">E</span>
+    <span class="intro-letter">M</span><span class="intro-letter">L</span><span class="intro-letter">I</span><span class="intro-dot intro-letter">.</span>
   </div>
 </div>
 
@@ -526,15 +508,11 @@
   // ---- Intro animation ----
   (function () {
     const intro  = document.getElementById('intro');
-    const badge  = document.getElementById('intro-badge');
     const letters = document.querySelectorAll('#intro-name .intro-letter');
 
-    // 1. Badge pop in
-    setTimeout(() => badge.classList.add('show'), 300);
-
-    // 2. Letters appear one by one
+    // Letters appear one by one
     letters.forEach((el, i) => {
-      setTimeout(() => el.classList.add('show'), 900 + i * 85);
+      setTimeout(() => el.classList.add('show'), 300 + i * 150);
     });
 
     // 3. Slide intro up to reveal the site
