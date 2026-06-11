@@ -69,7 +69,6 @@
   section { padding: 120px 0; }
   section:first-of-type { padding-top: 160px; }
 
-  /* Hero */
   .hero { min-height: 100vh; display: flex; align-items: center; padding-top: 100px; padding-bottom: 80px; }
   .hero-inner { padding: 56px 52px; }
   .hero-layout { display: grid; grid-template-columns: 320px 1fr; gap: 52px; align-items: center; margin-bottom: 48px; }
@@ -103,23 +102,33 @@
   .stat-num { font-family: 'Syne', sans-serif; font-size: 32px; font-weight: 700; background: linear-gradient(135deg, var(--rose), var(--orange)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
   .stat-label { font-size: 12px; color: var(--text-muted); margin-top: 2px; }
 
-  /* À propos */
   .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
   .about-main { padding: 40px; grid-column: 1 / -1; }
   .about-tag { font-size: 11px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--rose); margin-bottom: 16px; }
   .section-title { font-family: 'Syne', sans-serif; font-size: clamp(28px, 4vw, 40px); font-weight: 700; line-height: 1.15; margin-bottom: 16px; }
   .section-body { font-size: 15px; color: var(--text-secondary); line-height: 1.8; font-weight: 300; }
-
   .about-card { padding: 28px 32px; }
   .about-card-icon { font-size: 24px; margin-bottom: 12px; }
   .about-card-title { font-size: 15px; font-weight: 600; margin-bottom: 6px; }
   .about-card-subtitle { font-size: 13px; font-style: italic; color: rgba(255,160,130,0.85); margin-bottom: 10px; line-height: 1.5; }
   .about-card-text { font-size: 13px; color: var(--text-secondary); line-height: 1.6; }
 
-  /* Projets */
   .projects-grid { display: flex; flex-direction: column; gap: 16px; }
   .project-card { padding: 36px 40px; display: flex; align-items: flex-start; gap: 32px; }
-  .project-thumb { width: 120px; height: 90px; border-radius: 14px; background: linear-gradient(135deg, rgba(255,107,107,0.25), rgba(255,154,92,0.15)); border: 1px solid rgba(255,107,107,0.2); flex-shrink: 0; display: flex; align-items: center; justify-content: center; font-size: 28px; }
+  .project-thumb {
+    width: 160px;
+    height: 120px;
+    border-radius: 14px;
+    background: linear-gradient(135deg, rgba(255,107,107,0.15), rgba(255,154,92,0.08));
+    border: 1px solid rgba(255,107,107,0.2);
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 28px;
+    overflow: hidden;
+  }
+  .project-thumb img { width: 100%; height: 100%; object-fit: cover; display: block; border-radius: 13px; }
   .project-meta { flex: 1; }
   .project-tags { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 12px; }
   .tag { font-size: 11px; padding: 4px 12px; border-radius: 100px; background: rgba(255,107,107,0.12); border: 1px solid rgba(255,107,107,0.25); color: rgba(255,160,130,0.9); font-weight: 500; }
@@ -128,7 +137,6 @@
   .project-link { display: inline-flex; align-items: center; gap: 6px; font-size: 13px; color: var(--rose); font-weight: 500; text-decoration: none; margin-top: 14px; transition: gap 0.2s; }
   .project-link:hover { gap: 10px; }
 
-  /* Compétences */
   .skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 14px; }
   .skill-card { padding: 24px 28px; }
   .skill-icon { font-size: 20px; margin-bottom: 14px; }
@@ -136,7 +144,6 @@
   .skill-pills { display: flex; flex-wrap: wrap; gap: 6px; }
   .skill-pill { font-size: 11px; padding: 3px 10px; border-radius: 100px; background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1); color: var(--text-secondary); }
 
-  /* Contact */
   .contact-inner { padding: 56px 52px; text-align: center; }
   .contact-inner .section-title { font-size: clamp(32px, 5vw, 52px); }
   .contact-inner .section-body { max-width: 460px; margin: 0 auto 40px; }
@@ -152,16 +159,14 @@
   .reveal { opacity: 0; transform: translateY(30px); transition: opacity 0.7s ease, transform 0.7s ease; }
   .reveal.visible { opacity: 1; transform: translateY(0); }
 
-  @media (max-width: 900px) {
-    .hero-layout { grid-template-columns: 220px 1fr; gap: 36px; }
-  }
+  @media (max-width: 900px) { .hero-layout { grid-template-columns: 220px 1fr; gap: 36px; } }
   @media (max-width: 640px) {
     nav { gap: 20px; padding: 10px 20px; }
     .hero-inner, .about-main, .contact-inner { padding: 36px 28px; }
     .hero-layout { grid-template-columns: 1fr; }
     .hero-photo { aspect-ratio: 4 / 3; }
     .project-card { flex-direction: column; gap: 20px; padding: 28px; }
-    .project-thumb { width: 100%; height: 80px; }
+    .project-thumb { width: 100%; height: 180px; }
     .about-grid { grid-template-columns: 1fr; }
     .hero-stats { gap: 24px; }
   }
@@ -191,7 +196,7 @@
       <div class="hero-layout">
         <div class="hero-photo-wrap">
           <div class="hero-photo">
-            <!-- <img src="photo.jpg" alt="Mathilde"> -->
+            <!-- <img src="images/photo.jpg" alt="Mathilde"> -->
             <div class="hero-photo-icon">📸</div>
             <div class="hero-photo-hint">Votre photo ici</div>
           </div>
@@ -226,35 +231,30 @@
         <h2 class="section-title">Créer du sens,<br>pixel par pixel.</h2>
         <p class="section-body">Salariée dans la tech le jour, freelance web & digital la nuit — je combine la rigueur d’une expérience en entreprise avec la liberté de créer sur mesure pour chaque client. Spécialisée en communication digitale, je transforme des idées en interfaces qui convertissent pour vos clients.</p>
       </div>
-
       <div class="glass about-card reveal">
         <div class="about-card-icon">🌐</div>
         <div class="about-card-title">Création de site internet, boutique en ligne & intégrations web</div>
         <div class="about-card-subtitle">Votre vitrine digitale, enfin à votre image.</div>
         <div class="about-card-text">Un site qui vous ressemble, qui se trouve sur Google et qui donne envie de rester — je m’occupe de tout, du design jusqu’à la mise en ligne.</div>
       </div>
-
       <div class="glass about-card reveal">
         <div class="about-card-icon">✨</div>
         <div class="about-card-title">Stratégie digitale & identité visuelle</div>
         <div class="about-card-subtitle">On ne laisse rien au hasard — ni la couleur, ni les mots.</div>
         <div class="about-card-text">Je construis une identité visuelle forte et une stratégie digitale qui tient la route : pour que votre marque soit reconnaissable, cohérente, et mémorable.</div>
       </div>
-
       <div class="glass about-card reveal">
         <div class="about-card-icon">🎨</div>
         <div class="about-card-title">Création de plaquettes & supports print</div>
         <div class="about-card-subtitle">Parce qu’un beau papier, ça reste.</div>
         <div class="about-card-text">Flyers, brochures, plaquettes commerciales — je crée des supports imprimés soignés qui font bonne impression, au sens propre comme au sens figuré.</div>
       </div>
-
       <div class="glass about-card reveal">
         <div class="about-card-icon">📱</div>
         <div class="about-card-title">Réseaux sociaux</div>
         <div class="about-card-subtitle">Fini le syndrome de la page blanche.</div>
         <div class="about-card-text">Stratégie, visuels, planning éditorial : je vous aide à prendre la parole avec confiance sur les réseaux, et à créer une communauté qui s’engage vraiment.</div>
       </div>
-
     </div>
   </div>
 </section>
@@ -267,11 +267,19 @@
     <div class="projects-grid">
 
       <div class="glass project-card reveal">
-        <div class="project-thumb">🛒</div>
+        <div class="project-thumb">
+          <!-- Uploadez votre image dans images/fromagerie-blanc.jpg puis décommentez la ligne ci-dessous -->
+          <!-- <img src="images/fromagerie-blanc.jpg" alt="Plaquette Fromagerie Blanc"> -->
+          🧀
+        </div>
         <div class="project-meta">
-          <div class="project-tags"><span class="tag">Shopify</span><span class="tag">E-commerce</span><span class="tag">Migration</span></div>
-          <div class="project-title">Boutique e-commerce — [Nom client]</div>
-          <div class="project-desc">Migration PrestaShop vers Shopify, intégration d’un catalogue de 30 produits, configuration livraison et paiement. Livraison en 6 semaines.</div>
+          <div class="project-tags">
+            <span class="tag">Print</span>
+            <span class="tag">Identité visuelle</span>
+            <span class="tag">Flyer</span>
+          </div>
+          <div class="project-title">Design print & communication locale — Fromagerie Blanc à Parthenay (79)</div>
+          <div class="project-desc">Création d’une plaquette tri-volet pour une fromagerie artisanale de Parthenay — mise en page soignée, sélection de visuels appétissants et rédaction des textes. Un support prêt à distribuer, qui donne envie avant même d’entrer dans la boutique.</div>
           <a href="#" class="project-link">Voir le projet →</a>
         </div>
       </div>
