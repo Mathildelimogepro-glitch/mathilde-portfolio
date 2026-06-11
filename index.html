@@ -98,6 +98,57 @@
   /* ── Hero ── */
   .hero { min-height: 100vh; display: flex; align-items: center; padding-top: 100px; padding-bottom: 80px; }
   .hero-inner { padding: 56px 52px; }
+
+  .hero-layout {
+    display: grid;
+    grid-template-columns: 320px 1fr;
+    gap: 52px;
+    align-items: center;
+    margin-bottom: 48px;
+  }
+
+  /* ── Photo ── */
+  .hero-photo-wrap {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+  }
+  .hero-photo {
+    width: 100%;
+    aspect-ratio: 3 / 4;
+    border-radius: 20px;
+    background: linear-gradient(135deg, rgba(255,107,107,0.15), rgba(255,154,92,0.08));
+    border: 2px dashed rgba(255,107,107,0.3);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    color: rgba(255,107,107,0.5);
+    font-size: 13px;
+    overflow: hidden;
+  }
+  .hero-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 18px;
+    display: block;
+  }
+  .hero-photo-icon { font-size: 36px; opacity: 0.5; }
+  .hero-photo-hint { font-size: 12px; color: rgba(255,107,107,0.4); text-align: center; }
+  .hero-photo-caption {
+    font-size: 12px;
+    font-style: italic;
+    color: var(--text-muted);
+    text-align: center;
+    line-height: 1.6;
+    padding: 0 4px;
+  }
+
+  /* ── Hero content ── */
+  .hero-content {}
   .hero-eyebrow {
     display: inline-flex;
     align-items: center;
@@ -112,7 +163,7 @@
   .hero-eyebrow span { width: 28px; height: 1px; background: linear-gradient(90deg, var(--rose), var(--orange)); display: inline-block; }
   .hero-title {
     font-family: 'Syne', sans-serif;
-    font-size: clamp(44px, 7vw, 80px);
+    font-size: clamp(36px, 5vw, 68px);
     font-weight: 800;
     line-height: 1.05;
     letter-spacing: -0.02em;
@@ -124,7 +175,7 @@
     -webkit-text-fill-color: transparent;
     background-clip: text;
   }
-  .hero-desc { font-size: 17px; color: var(--text-secondary); line-height: 1.7; max-width: 520px; margin-bottom: 40px; font-weight: 300; }
+  .hero-desc { font-size: 17px; color: var(--text-secondary); line-height: 1.7; margin-bottom: 40px; font-weight: 300; }
   .hero-actions { display: flex; gap: 14px; flex-wrap: wrap; }
   .btn-primary {
     padding: 13px 28px;
@@ -151,7 +202,7 @@
   }
   .btn-ghost:hover { border-color: rgba(255,255,255,0.4); color: var(--text-primary); transform: translateY(-1px); }
 
-  .hero-stats { display: flex; gap: 40px; margin-top: 48px; padding-top: 40px; border-top: 1px solid var(--glass-border); }
+  .hero-stats { display: flex; gap: 40px; padding-top: 40px; border-top: 1px solid var(--glass-border); }
   .stat-num { font-family: 'Syne', sans-serif; font-size: 32px; font-weight: 700; background: linear-gradient(135deg, var(--rose), var(--orange)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
   .stat-label { font-size: 12px; color: var(--text-muted); margin-top: 2px; }
 
@@ -216,9 +267,14 @@
   .reveal { opacity: 0; transform: translateY(30px); transition: opacity 0.7s ease, transform 0.7s ease; }
   .reveal.visible { opacity: 1; transform: translateY(0); }
 
+  @media (max-width: 900px) {
+    .hero-layout { grid-template-columns: 220px 1fr; gap: 36px; }
+  }
   @media (max-width: 640px) {
     nav { gap: 20px; padding: 10px 20px; }
     .hero-inner, .about-main, .contact-inner { padding: 36px 28px; }
+    .hero-layout { grid-template-columns: 1fr; }
+    .hero-photo { aspect-ratio: 4 / 3; }
     .project-card { flex-direction: column; gap: 20px; padding: 28px; }
     .project-thumb { width: 100%; height: 80px; }
     .about-grid { grid-template-columns: 1fr; }
@@ -247,19 +303,40 @@
 <section class="hero">
   <div class="container" style="width:100%">
     <div class="glass hero-inner reveal">
-      <div class="hero-eyebrow"><span></span> Disponible pour de nouvelles opportunités</div>
-      <h1 class="hero-title">
-        Communication<br>& <span class="gradient-text">Web Design</span>
-      </h1>
-      <p class="hero-desc">Je conçois des expériences digitales qui allient stratégie de communication et maîtrise technique — du brief à la mise en ligne.</p>
-      <div class="hero-actions">
-        <a href="#projects" class="btn-primary">Voir mes projets</a>
-        <a href="#contact" class="btn-ghost">Me contacter</a>
+
+      <div class="hero-layout">
+
+        <!-- Colonne gauche : photo -->
+        <div class="hero-photo-wrap">
+          <div class="hero-photo">
+            <!-- Remplacez src="" par le chemin de votre photo -->
+            <!-- <img src="photo.jpg" alt="Mathilde"> -->
+            <div class="hero-photo-icon">📸</div>
+            <div class="hero-photo-hint">Votre photo ici</div>
+          </div>
+          <p class="hero-photo-caption">Cycliste, tenniswoman, coureuse&nbsp;: je fonce avec mille idées à l’heure et toujours un cap à suivre.</p>
+        </div>
+
+        <!-- Colonne droite : texte -->
+        <div class="hero-content">
+          <div class="hero-eyebrow"><span></span> Disponible pour de nouvelles opportunités</div>
+          <h1 class="hero-title">
+            Communication<br>& <span class="gradient-text">Web Design</span>
+          </h1>
+          <p class="hero-desc">Je conçois des expériences digitales qui allient stratégie de communication et maîtrise technique — du brief à la mise en ligne.</p>
+          <div class="hero-actions">
+            <a href="#projects" class="btn-primary">Voir mes projets</a>
+            <a href="#contact" class="btn-ghost">Me contacter</a>
+          </div>
+        </div>
+
       </div>
+
+      <!-- Stats en bas, pleine largeur -->
       <div class="hero-stats">
         <div>
           <div class="stat-num">3+</div>
-          <div class="stat-label">Ans d'expérience</div>
+          <div class="stat-label">Ans d’expérience</div>
         </div>
         <div>
           <div class="stat-num">12</div>
@@ -270,6 +347,7 @@
           <div class="stat-label">Clients satisfaits</div>
         </div>
       </div>
+
     </div>
     <div class="scroll-line">
       <span>scroll</span>
