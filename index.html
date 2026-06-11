@@ -33,20 +33,8 @@
     overflow-x: hidden;
   }
 
-  /* ── Orbes de fond ── */
-  .bg-orbs {
-    position: fixed;
-    inset: 0;
-    pointer-events: none;
-    z-index: 0;
-    overflow: hidden;
-  }
-  .orb {
-    position: absolute;
-    border-radius: 50%;
-    filter: blur(100px);
-    opacity: 0.35;
-  }
+  .bg-orbs { position: fixed; inset: 0; pointer-events: none; z-index: 0; overflow: hidden; }
+  .orb { position: absolute; border-radius: 50%; filter: blur(100px); opacity: 0.35; }
   .orb-1 { width: 600px; height: 600px; background: var(--rose); top: -150px; right: -100px; animation: drift1 18s ease-in-out infinite; }
   .orb-2 { width: 500px; height: 500px; background: var(--orange); bottom: 10%; left: -120px; animation: drift2 22s ease-in-out infinite; }
   .orb-3 { width: 350px; height: 350px; background: var(--pink); top: 40%; left: 40%; animation: drift3 26s ease-in-out infinite; }
@@ -56,10 +44,8 @@
   @keyframes drift2 { 0%,100% { transform: translate(0,0) scale(1); } 50% { transform: translate(-30px,50px) scale(0.92); } }
   @keyframes drift3 { 0%,100% { transform: translate(0,0) scale(1); } 33% { transform: translate(60px,30px) scale(1.05); } 66% { transform: translate(-40px,-40px) scale(0.95); } }
 
-  /* ── Layout ── */
   .container { position: relative; z-index: 1; width: 100%; padding: 0 40px; }
 
-  /* ── Glass card ── */
   .glass {
     background: var(--glass-bg);
     border: 1px solid var(--glass-border);
@@ -70,168 +56,70 @@
   }
   .glass:hover { background: var(--glass-hover); border-color: rgba(255,255,255,0.22); }
 
-  /* ── Nav flottante ── */
   nav {
-    position: fixed;
-    top: 24px;
-    left: 50%;
-    transform: translateX(-50%);
-    z-index: 100;
-    padding: 10px 28px;
-    display: flex;
-    align-items: center;
-    gap: 32px;
-    background: rgba(10,10,15,0.55);
-    border: 1px solid var(--glass-border);
-    backdrop-filter: blur(30px);
-    -webkit-backdrop-filter: blur(30px);
-    border-radius: 100px;
+    position: fixed; top: 24px; left: 50%; transform: translateX(-50%);
+    z-index: 100; padding: 10px 28px; display: flex; align-items: center; gap: 32px;
+    background: rgba(10,10,15,0.55); border: 1px solid var(--glass-border);
+    backdrop-filter: blur(30px); -webkit-backdrop-filter: blur(30px); border-radius: 100px;
   }
   nav a { font-size: 13px; font-weight: 500; color: var(--text-secondary); text-decoration: none; letter-spacing: 0.02em; transition: color 0.2s; }
   nav a:hover { color: var(--text-primary); }
   .nav-dot { width: 6px; height: 6px; border-radius: 50%; background: linear-gradient(135deg, var(--rose), var(--orange)); }
 
-  /* ── Section spacing ── */
   section { padding: 120px 0; }
   section:first-of-type { padding-top: 160px; }
 
-  /* ── Hero ── */
+  /* Hero */
   .hero { min-height: 100vh; display: flex; align-items: center; padding-top: 100px; padding-bottom: 80px; }
   .hero-inner { padding: 56px 52px; }
+  .hero-layout { display: grid; grid-template-columns: 320px 1fr; gap: 52px; align-items: center; margin-bottom: 48px; }
 
-  .hero-layout {
-    display: grid;
-    grid-template-columns: 320px 1fr;
-    gap: 52px;
-    align-items: center;
-    margin-bottom: 48px;
-  }
-
-  /* ── Photo ── */
-  .hero-photo-wrap {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 16px;
-  }
+  .hero-photo-wrap { display: flex; flex-direction: column; align-items: center; gap: 16px; }
   .hero-photo {
-    width: 100%;
-    aspect-ratio: 3 / 4;
-    border-radius: 20px;
+    width: 100%; aspect-ratio: 3 / 4; border-radius: 20px;
     background: linear-gradient(135deg, rgba(255,107,107,0.15), rgba(255,154,92,0.08));
     border: 2px dashed rgba(255,107,107,0.3);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
-    color: rgba(255,107,107,0.5);
-    font-size: 13px;
-    overflow: hidden;
+    display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 10px;
+    color: rgba(255,107,107,0.5); font-size: 13px; overflow: hidden;
   }
-  .hero-photo img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    border-radius: 18px;
-    display: block;
-  }
+  .hero-photo img { width: 100%; height: 100%; object-fit: cover; border-radius: 18px; display: block; }
   .hero-photo-icon { font-size: 36px; opacity: 0.5; }
   .hero-photo-hint { font-size: 12px; color: rgba(255,107,107,0.4); text-align: center; }
-  .hero-photo-caption {
-    font-size: 12px;
-    font-style: italic;
-    color: var(--text-muted);
-    text-align: center;
-    line-height: 1.6;
-    padding: 0 4px;
-  }
+  .hero-photo-caption { font-size: 12px; font-style: italic; color: var(--text-muted); text-align: center; line-height: 1.6; padding: 0 4px; }
 
-  /* ── Hero content ── */
-  .hero-content {}
-  .hero-eyebrow {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    font-size: 12px;
-    font-weight: 500;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: var(--text-muted);
-    margin-bottom: 28px;
-  }
+  .hero-eyebrow { display: inline-flex; align-items: center; gap: 8px; font-size: 12px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 28px; }
   .hero-eyebrow span { width: 28px; height: 1px; background: linear-gradient(90deg, var(--rose), var(--orange)); display: inline-block; }
-  .hero-title {
-    font-family: 'Syne', sans-serif;
-    font-size: clamp(36px, 5vw, 68px);
-    font-weight: 800;
-    line-height: 1.05;
-    letter-spacing: -0.02em;
-    margin-bottom: 24px;
-  }
-  .hero-title .gradient-text {
-    background: linear-gradient(135deg, var(--rose) 0%, var(--orange) 50%, var(--amber) 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-  }
+  .hero-title { font-family: 'Syne', sans-serif; font-size: clamp(36px, 5vw, 68px); font-weight: 800; line-height: 1.05; letter-spacing: -0.02em; margin-bottom: 24px; }
+  .hero-title .gradient-text { background: linear-gradient(135deg, var(--rose) 0%, var(--orange) 50%, var(--amber) 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
   .hero-desc { font-size: 17px; color: var(--text-secondary); line-height: 1.7; margin-bottom: 40px; font-weight: 300; }
   .hero-actions { display: flex; gap: 14px; flex-wrap: wrap; }
-  .btn-primary {
-    padding: 13px 28px;
-    border-radius: 100px;
-    background: linear-gradient(135deg, var(--rose), var(--orange));
-    color: #fff;
-    font-size: 14px;
-    font-weight: 600;
-    text-decoration: none;
-    letter-spacing: 0.01em;
-    transition: opacity 0.2s, transform 0.2s;
-  }
+
+  .btn-primary { padding: 13px 28px; border-radius: 100px; background: linear-gradient(135deg, var(--rose), var(--orange)); color: #fff; font-size: 14px; font-weight: 600; text-decoration: none; letter-spacing: 0.01em; transition: opacity 0.2s, transform 0.2s; }
   .btn-primary:hover { opacity: 0.88; transform: translateY(-1px); }
-  .btn-ghost {
-    padding: 13px 28px;
-    border-radius: 100px;
-    background: transparent;
-    border: 1px solid var(--glass-border);
-    color: var(--text-secondary);
-    font-size: 14px;
-    font-weight: 500;
-    text-decoration: none;
-    transition: border-color 0.2s, color 0.2s, transform 0.2s;
-  }
+  .btn-ghost { padding: 13px 28px; border-radius: 100px; background: transparent; border: 1px solid var(--glass-border); color: var(--text-secondary); font-size: 14px; font-weight: 500; text-decoration: none; transition: border-color 0.2s, color 0.2s, transform 0.2s; }
   .btn-ghost:hover { border-color: rgba(255,255,255,0.4); color: var(--text-primary); transform: translateY(-1px); }
 
   .hero-stats { display: flex; gap: 40px; padding-top: 40px; border-top: 1px solid var(--glass-border); }
   .stat-num { font-family: 'Syne', sans-serif; font-size: 32px; font-weight: 700; background: linear-gradient(135deg, var(--rose), var(--orange)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
   .stat-label { font-size: 12px; color: var(--text-muted); margin-top: 2px; }
 
-  /* ── À propos ── */
+  /* À propos */
   .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
   .about-main { padding: 40px; grid-column: 1 / -1; }
   .about-tag { font-size: 11px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--rose); margin-bottom: 16px; }
   .section-title { font-family: 'Syne', sans-serif; font-size: clamp(28px, 4vw, 40px); font-weight: 700; line-height: 1.15; margin-bottom: 16px; }
   .section-body { font-size: 15px; color: var(--text-secondary); line-height: 1.8; font-weight: 300; }
+
   .about-card { padding: 28px 32px; }
   .about-card-icon { font-size: 24px; margin-bottom: 12px; }
   .about-card-title { font-size: 15px; font-weight: 600; margin-bottom: 6px; }
+  .about-card-subtitle { font-size: 13px; font-style: italic; color: rgba(255,160,130,0.85); margin-bottom: 10px; line-height: 1.5; }
   .about-card-text { font-size: 13px; color: var(--text-secondary); line-height: 1.6; }
 
-  /* ── Projets ── */
+  /* Projets */
   .projects-grid { display: flex; flex-direction: column; gap: 16px; }
   .project-card { padding: 36px 40px; display: flex; align-items: flex-start; gap: 32px; }
-  .project-thumb {
-    width: 120px;
-    height: 90px;
-    border-radius: 14px;
-    background: linear-gradient(135deg, rgba(255,107,107,0.25), rgba(255,154,92,0.15));
-    border: 1px solid rgba(255,107,107,0.2);
-    flex-shrink: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 28px;
-  }
+  .project-thumb { width: 120px; height: 90px; border-radius: 14px; background: linear-gradient(135deg, rgba(255,107,107,0.25), rgba(255,154,92,0.15)); border: 1px solid rgba(255,107,107,0.2); flex-shrink: 0; display: flex; align-items: center; justify-content: center; font-size: 28px; }
   .project-meta { flex: 1; }
   .project-tags { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 12px; }
   .tag { font-size: 11px; padding: 4px 12px; border-radius: 100px; background: rgba(255,107,107,0.12); border: 1px solid rgba(255,107,107,0.25); color: rgba(255,160,130,0.9); font-weight: 500; }
@@ -240,7 +128,7 @@
   .project-link { display: inline-flex; align-items: center; gap: 6px; font-size: 13px; color: var(--rose); font-weight: 500; text-decoration: none; margin-top: 14px; transition: gap 0.2s; }
   .project-link:hover { gap: 10px; }
 
-  /* ── Compétences ── */
+  /* Compétences */
   .skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 14px; }
   .skill-card { padding: 24px 28px; }
   .skill-icon { font-size: 20px; margin-bottom: 14px; }
@@ -248,22 +136,19 @@
   .skill-pills { display: flex; flex-wrap: wrap; gap: 6px; }
   .skill-pill { font-size: 11px; padding: 3px 10px; border-radius: 100px; background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1); color: var(--text-secondary); }
 
-  /* ── Contact ── */
+  /* Contact */
   .contact-inner { padding: 56px 52px; text-align: center; }
   .contact-inner .section-title { font-size: clamp(32px, 5vw, 52px); }
   .contact-inner .section-body { max-width: 460px; margin: 0 auto 40px; }
   .contact-links { display: flex; justify-content: center; gap: 14px; flex-wrap: wrap; }
 
-  /* ── Scroll indicator ── */
   .scroll-line { display: flex; flex-direction: column; align-items: center; gap: 8px; margin-top: 48px; }
   .scroll-line span { font-size: 11px; color: var(--text-muted); letter-spacing: 0.08em; }
   .scroll-line-bar { width: 1px; height: 48px; background: linear-gradient(to bottom, rgba(255,107,107,0.6), transparent); }
 
-  /* ── Footer ── */
   footer { padding: 40px 0; text-align: center; }
   footer p { font-size: 12px; color: var(--text-muted); }
 
-  /* ── Reveal on scroll ── */
   .reveal { opacity: 0; transform: translateY(30px); transition: opacity 0.7s ease, transform 0.7s ease; }
   .reveal.visible { opacity: 1; transform: translateY(0); }
 
@@ -299,64 +184,40 @@
   <a href="#contact">Contact</a>
 </nav>
 
-<!-- ── Hero ── -->
+<!-- Hero -->
 <section class="hero">
   <div class="container" style="width:100%">
     <div class="glass hero-inner reveal">
-
       <div class="hero-layout">
-
-        <!-- Colonne gauche : photo -->
         <div class="hero-photo-wrap">
           <div class="hero-photo">
-            <!-- Remplacez src="" par le chemin de votre photo -->
             <!-- <img src="photo.jpg" alt="Mathilde"> -->
             <div class="hero-photo-icon">📸</div>
             <div class="hero-photo-hint">Votre photo ici</div>
           </div>
           <p class="hero-photo-caption">Cycliste, tenniswoman, coureuse : je fonce avec mille idées à l’heure et toujours un cap à suivre.</p>
         </div>
-
-        <!-- Colonne droite : texte -->
         <div class="hero-content">
           <div class="hero-eyebrow"><span></span> Mathilde Limoge, freelance web design</div>
-          <h1 class="hero-title">
-            Communication<br>& <span class="gradient-text">Web Design</span>
-          </h1>
+          <h1 class="hero-title">Communication<br>& <span class="gradient-text">Web Design</span></h1>
           <p class="hero-desc">Je conçois des expériences digitales qui allient stratégie de communication et maîtrise technique — du brief à la mise en ligne.</p>
           <div class="hero-actions">
             <a href="#projects" class="btn-primary">Voir mes projets</a>
             <a href="#contact" class="btn-ghost">Me contacter</a>
           </div>
         </div>
-
       </div>
-
-      <!-- Stats en bas, pleine largeur -->
       <div class="hero-stats">
-        <div>
-          <div class="stat-num">3+</div>
-          <div class="stat-label">Ans d’expérience</div>
-        </div>
-        <div>
-          <div class="stat-num">12</div>
-          <div class="stat-label">Projets livrés</div>
-        </div>
-        <div>
-          <div class="stat-num">100%</div>
-          <div class="stat-label">Clients satisfaits</div>
-        </div>
+        <div><div class="stat-num">3+</div><div class="stat-label">Ans d’expérience</div></div>
+        <div><div class="stat-num">12</div><div class="stat-label">Projets livrés</div></div>
+        <div><div class="stat-num">100%</div><div class="stat-label">Clients satisfaits</div></div>
       </div>
-
     </div>
-    <div class="scroll-line">
-      <span>scroll</span>
-      <div class="scroll-line-bar"></div>
-    </div>
+    <div class="scroll-line"><span>scroll</span><div class="scroll-line-bar"></div></div>
   </div>
 </section>
 
-<!-- ── À propos ── -->
+<!-- À propos -->
 <section id="about">
   <div class="container">
     <div class="about-grid">
@@ -365,31 +226,40 @@
         <h2 class="section-title">Créer du sens,<br>pixel par pixel.</h2>
         <p class="section-body">Salariée dans la tech le jour, freelance web & digital la nuit — je combine la rigueur d’une expérience en entreprise avec la liberté de créer sur mesure pour chaque client. Spécialisée en communication digitale, je transforme des idées en interfaces qui convertissent pour vos clients.</p>
       </div>
+
       <div class="glass about-card reveal">
-        <div class="about-card-icon">🎯</div>
-        <div class="about-card-title">Stratégie digitale</div>
-        <div class="about-card-text">Audit, positionnement et plan d'action adapté à chaque projet.</div>
+        <div class="about-card-icon">🌐</div>
+        <div class="about-card-title">Création de site internet, boutique en ligne & intégrations web</div>
+        <div class="about-card-subtitle">Votre vitrine digitale, enfin à votre image.</div>
+        <div class="about-card-text">Un site qui vous ressemble, qui se trouve sur Google et qui donne envie de rester — je m’occupe de tout, du design jusqu’à la mise en ligne.</div>
       </div>
+
       <div class="glass about-card reveal">
-        <div class="about-card-icon">🛍️</div>
-        <div class="about-card-title">E-commerce Shopify</div>
-        <div class="about-card-text">Migration, création de boutiques, intégration de catalogues produits.</div>
+        <div class="about-card-icon">✨</div>
+        <div class="about-card-title">Stratégie digitale & identité visuelle</div>
+        <div class="about-card-subtitle">On ne laisse rien au hasard — ni la couleur, ni les mots.</div>
+        <div class="about-card-text">Je construis une identité visuelle forte et une stratégie digitale qui tient la route : pour que votre marque soit reconnaissable, cohérente, et mémorable.</div>
       </div>
+
       <div class="glass about-card reveal">
-        <div class="about-card-icon">✏️</div>
-        <div class="about-card-title">Design & identité</div>
-        <div class="about-card-text">Charte graphique, maquettes Figma, déclinaisons print et web.</div>
+        <div class="about-card-icon">🎨</div>
+        <div class="about-card-title">Création de plaquettes & supports print</div>
+        <div class="about-card-subtitle">Parce qu’un beau papier, ça reste.</div>
+        <div class="about-card-text">Flyers, brochures, plaquettes commerciales — je crée des supports imprimés soignés qui font bonne impression, au sens propre comme au sens figuré.</div>
       </div>
+
       <div class="glass about-card reveal">
-        <div class="about-card-icon">💻</div>
-        <div class="about-card-title">Intégration web</div>
-        <div class="about-card-text">HTML, CSS, JS — développement propre et responsive.</div>
+        <div class="about-card-icon">📱</div>
+        <div class="about-card-title">Réseaux sociaux</div>
+        <div class="about-card-subtitle">Fini le syndrome de la page blanche.</div>
+        <div class="about-card-text">Stratégie, visuels, planning éditorial : je vous aide à prendre la parole avec confiance sur les réseaux, et à créer une communauté qui s’engage vraiment.</div>
       </div>
+
     </div>
   </div>
 </section>
 
-<!-- ── Projets ── -->
+<!-- Projets -->
 <section id="projects">
   <div class="container">
     <div class="about-tag reveal" style="margin-bottom:24px">Réalisations</div>
@@ -399,13 +269,9 @@
       <div class="glass project-card reveal">
         <div class="project-thumb">🛒</div>
         <div class="project-meta">
-          <div class="project-tags">
-            <span class="tag">Shopify</span>
-            <span class="tag">E-commerce</span>
-            <span class="tag">Migration</span>
-          </div>
+          <div class="project-tags"><span class="tag">Shopify</span><span class="tag">E-commerce</span><span class="tag">Migration</span></div>
           <div class="project-title">Boutique e-commerce — [Nom client]</div>
-          <div class="project-desc">Migration PrestaShop vers Shopify, intégration d'un catalogue de 30 produits, configuration livraison et paiement. Livraison en 6 semaines.</div>
+          <div class="project-desc">Migration PrestaShop vers Shopify, intégration d’un catalogue de 30 produits, configuration livraison et paiement. Livraison en 6 semaines.</div>
           <a href="#" class="project-link">Voir le projet →</a>
         </div>
       </div>
@@ -413,11 +279,7 @@
       <div class="glass project-card reveal">
         <div class="project-thumb">🎨</div>
         <div class="project-meta">
-          <div class="project-tags">
-            <span class="tag">Identité visuelle</span>
-            <span class="tag">Figma</span>
-            <span class="tag">Brand</span>
-          </div>
+          <div class="project-tags"><span class="tag">Identité visuelle</span><span class="tag">Figma</span><span class="tag">Brand</span></div>
           <div class="project-title">Identité de marque — [Nom client]</div>
           <div class="project-desc">Création complète de la charte graphique : logo, typographies, palette de couleurs, déclinaisons réseaux sociaux et print.</div>
           <a href="#" class="project-link">Voir le projet →</a>
@@ -427,13 +289,9 @@
       <div class="glass project-card reveal">
         <div class="project-thumb">📱</div>
         <div class="project-meta">
-          <div class="project-tags">
-            <span class="tag">Site vitrine</span>
-            <span class="tag">HTML/CSS</span>
-            <span class="tag">Responsive</span>
-          </div>
+          <div class="project-tags"><span class="tag">Site vitrine</span><span class="tag">HTML/CSS</span><span class="tag">Responsive</span></div>
           <div class="project-title">Site vitrine — [Nom client]</div>
-          <div class="project-desc">Conception et développement d'un site vitrine sur mesure, optimisé SEO et mobile-first. Design épuré avec animations CSS.</div>
+          <div class="project-desc">Conception et développement d’un site vitrine sur mesure, optimisé SEO et mobile-first. Design épuré avec animations CSS.</div>
           <a href="#" class="project-link">Voir le projet →</a>
         </div>
       </div>
@@ -442,7 +300,7 @@
   </div>
 </section>
 
-<!-- ── Compétences ── -->
+<!-- Compétences -->
 <section id="skills">
   <div class="container">
     <div class="about-tag reveal" style="margin-bottom:24px">Stack</div>
@@ -451,45 +309,28 @@
       <div class="glass skill-card reveal">
         <div class="skill-icon">🖥️</div>
         <div class="skill-name">Développement</div>
-        <div class="skill-pills">
-          <span class="skill-pill">HTML</span>
-          <span class="skill-pill">CSS</span>
-          <span class="skill-pill">JavaScript</span>
-          <span class="skill-pill">Liquid</span>
-        </div>
+        <div class="skill-pills"><span class="skill-pill">HTML</span><span class="skill-pill">CSS</span><span class="skill-pill">JavaScript</span><span class="skill-pill">Liquid</span></div>
       </div>
       <div class="glass skill-card reveal">
         <div class="skill-icon">🛍️</div>
         <div class="skill-name">E-commerce</div>
-        <div class="skill-pills">
-          <span class="skill-pill">Shopify</span>
-          <span class="skill-pill">PrestaShop</span>
-          <span class="skill-pill">WooCommerce</span>
-        </div>
+        <div class="skill-pills"><span class="skill-pill">Shopify</span><span class="skill-pill">PrestaShop</span><span class="skill-pill">WooCommerce</span></div>
       </div>
       <div class="glass skill-card reveal">
         <div class="skill-icon">🎨</div>
         <div class="skill-name">Design</div>
-        <div class="skill-pills">
-          <span class="skill-pill">Figma</span>
-          <span class="skill-pill">Canva Pro</span>
-          <span class="skill-pill">Adobe XD</span>
-        </div>
+        <div class="skill-pills"><span class="skill-pill">Figma</span><span class="skill-pill">Canva Pro</span><span class="skill-pill">Adobe XD</span></div>
       </div>
       <div class="glass skill-card reveal">
         <div class="skill-icon">📣</div>
         <div class="skill-name">Communication</div>
-        <div class="skill-pills">
-          <span class="skill-pill">Social media</span>
-          <span class="skill-pill">Copywriting</span>
-          <span class="skill-pill">Email mktg</span>
-        </div>
+        <div class="skill-pills"><span class="skill-pill">Social media</span><span class="skill-pill">Copywriting</span><span class="skill-pill">Email mktg</span></div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ── Contact ── -->
+<!-- Contact -->
 <section id="contact">
   <div class="container">
     <div class="glass contact-inner reveal">
