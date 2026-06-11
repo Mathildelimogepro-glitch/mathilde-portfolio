@@ -339,8 +339,10 @@
   footer { padding: 40px 0; text-align: center; }
   footer p { font-size: 12px; color: var(--text-muted); }
 
-  .reveal { opacity: 0; transform: translateY(30px); transition: opacity 0.7s ease, transform 0.7s ease; }
+  .reveal { opacity: 0; transform: translateY(40px); transition: opacity 0.75s cubic-bezier(0.16,1,0.3,1), transform 0.75s cubic-bezier(0.16,1,0.3,1); }
   .reveal.visible { opacity: 1; transform: translateY(0); }
+  .reveal-left { opacity: 0; transform: translateX(-40px); transition: opacity 0.75s cubic-bezier(0.16,1,0.3,1), transform 0.75s cubic-bezier(0.16,1,0.3,1); }
+  .reveal-left.visible { opacity: 1; transform: translateX(0); }
 
   @media (max-width: 900px) { .hero-layout { grid-template-columns: 200px 1fr; gap: 32px; } }
   @media (max-width: 640px) {
@@ -356,6 +358,68 @@
     .skills-row { grid-template-columns: 1fr; }
     .intro-name { font-size: clamp(32px, 10vw, 60px); }
   }
+
+  /* ── CUSTOM CURSOR ── */
+  @media (hover: hover) {
+    * { cursor: none !important; }
+  }
+  #cursor-dot {
+    width: 6px; height: 6px; background: #FF751F; border-radius: 50%;
+    position: fixed; top: 0; left: 0; pointer-events: none; z-index: 99999;
+    transform: translate(-50%,-50%);
+    transition: transform 0.1s ease, width 0.25s ease, height 0.25s ease, opacity 0.25s ease;
+  }
+  #cursor-ring {
+    width: 36px; height: 36px;
+    border: 1.5px solid rgba(255,117,31,0.5); border-radius: 50%;
+    position: fixed; top: 0; left: 0; pointer-events: none; z-index: 99998;
+    transform: translate(-50%,-50%);
+    transition: width 0.35s cubic-bezier(0.16,1,0.3,1), height 0.35s cubic-bezier(0.16,1,0.3,1), opacity 0.3s ease;
+  }
+  body.cursor-hover #cursor-ring { width: 60px; height: 60px; opacity: 0.6; }
+  body.cursor-hover #cursor-dot { width: 10px; height: 10px; }
+
+  /* ── WORD SPLIT ANIMATION ── */
+  .word-reveal { overflow: hidden; display: inline-block; }
+  .word-reveal .word {
+    display: inline-block;
+    transform: translateY(110%);
+    opacity: 0;
+    transition: transform 0.7s cubic-bezier(0.16,1,0.3,1), opacity 0.5s ease;
+  }
+  .word-reveal .word.show { transform: translateY(0); opacity: 1; }
+
+  /* ── HERO entrance ── */
+  .hero-inner { opacity: 0; transform: translateY(24px); transition: opacity 0.9s cubic-bezier(0.16,1,0.3,1) 0.2s, transform 0.9s cubic-bezier(0.16,1,0.3,1) 0.2s; }
+  .hero-inner.entered { opacity: 1; transform: translateY(0); }
+
+  /* ── MAGNETIC BTN ── */
+  .btn-primary, .btn-ghost, .stack-card-link { transition: transform 0.3s cubic-bezier(0.34,1.56,0.64,1), opacity 0.2s, background 0.2s, gap 0.2s, border-color 0.2s; }
+
+  /* ── SMOOTH IMAGE REVEAL ── */
+  .img-reveal { overflow: hidden; }
+  .img-reveal img { transform: scale(1.12); transition: transform 0.9s cubic-bezier(0.16,1,0.3,1); }
+  .img-reveal.visible img { transform: scale(1); }
+
+  /* ── COUNTER ── */
+  .stat-num { font-variant-numeric: tabular-nums; }
+
+  /* ── LINE DRAW ── */
+  .hero-eyebrow span {
+    width: 0; height: 1px;
+    background: linear-gradient(90deg, var(--rose), var(--orange));
+    display: inline-block;
+    transition: width 0.8s cubic-bezier(0.16,1,0.3,1) 0.5s;
+  }
+  .hero-inner.entered .hero-eyebrow span { width: 28px; }
+
+  /* ── STAGGER DELAY UTILITIES ── */
+  .d1 { transition-delay: 0.05s !important; }
+  .d2 { transition-delay: 0.12s !important; }
+  .d3 { transition-delay: 0.19s !important; }
+  .d4 { transition-delay: 0.26s !important; }
+  .d5 { transition-delay: 0.33s !important; }
+
 </style>
 </head>
 <body>
@@ -363,6 +427,9 @@
 <!-- =====================
      INTRO ANIMATION
 ===================== -->
+<div id="cursor-dot"></div>
+<div id="cursor-ring"></div>
+
 <div id="intro">
   <div class="intro-name" id="intro-name">
     <span class="intro-letter">M</span><span class="intro-letter">L</span><span class="intro-letter">I</span><span class="intro-dot intro-letter">.</span>
@@ -494,7 +561,7 @@
           </div>
           <a href="#" class="stack-card-link">Voir le projet <span class="stack-card-link-arrow">→</span></a>
         </div>
-        <div class="stack-card-image"><img src="fromagerie-blanc.png" alt="Fromagerie Blanc"></div>
+        <div class="stack-card-image img-reveal reveal"><img src="fromagerie-blanc.png" alt="Fromagerie Blanc"></div>
       </div>
     </div>
 
@@ -509,7 +576,7 @@
           </div>
           <a href="#" class="stack-card-link">Voir le projet <span class="stack-card-link-arrow">→</span></a>
         </div>
-        <div class="stack-card-image"><img src="comite-fetes-champdeniers.png" alt="Comité des Fêtes de Champdeniers"></div>
+        <div class="stack-card-image img-reveal reveal"><img src="comite-fetes-champdeniers.png" alt="Comité des Fêtes de Champdeniers"></div>
       </div>
     </div>
 
@@ -524,7 +591,7 @@
           </div>
           <a href="#" class="stack-card-link">Voir le projet <span class="stack-card-link-arrow">→</span></a>
         </div>
-        <div class="stack-card-image"><img src="atouts-travaux-habitat.png" alt="Atouts Travaux Habitat"></div>
+        <div class="stack-card-image img-reveal reveal"><img src="atouts-travaux-habitat.png" alt="Atouts Travaux Habitat"></div>
       </div>
     </div>
 
@@ -619,64 +686,160 @@
 </footer>
 
 <script>
-  // Force scroll to top — prevent browser scroll restoration from landing on wrong section
+  // ── Scroll restoration ──
   if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
   window.scrollTo(0, 0);
 
-  // ---- Intro animation ----
-  (function () {
-    const intro  = document.getElementById('intro');
-    const letters = document.querySelectorAll('#intro-name .intro-letter');
-
-    // Letters appear one by one
-    letters.forEach((el, i) => {
-      setTimeout(() => el.classList.add('show'), 300 + i * 150);
+  // ── Custom cursor ──
+  (function() {
+    const dot  = document.getElementById('cursor-dot');
+    const ring = document.getElementById('cursor-ring');
+    if (!dot || !ring) return;
+    let mx = -100, my = -100, rx = -100, ry = -100;
+    document.addEventListener('mousemove', e => { mx = e.clientX; my = e.clientY; }, { passive: true });
+    (function loop() {
+      rx += (mx - rx) * 0.14;
+      ry += (my - ry) * 0.14;
+      dot.style.left  = mx + 'px';
+      dot.style.top   = my + 'px';
+      ring.style.left = rx + 'px';
+      ring.style.top  = ry + 'px';
+      requestAnimationFrame(loop);
+    })();
+    document.querySelectorAll('a,button,.btn-primary,.btn-ghost,.stack-card-link,.stack-card').forEach(el => {
+      el.addEventListener('mouseenter', () => document.body.classList.add('cursor-hover'));
+      el.addEventListener('mouseleave', () => document.body.classList.remove('cursor-hover'));
     });
+  })();
 
-    // 3. Slide intro up to reveal the site
+  // ── Magnetic buttons ──
+  document.querySelectorAll('.btn-primary,.btn-ghost,.stack-card-link').forEach(btn => {
+    btn.addEventListener('mousemove', function(e) {
+      const r = this.getBoundingClientRect();
+      const x = (e.clientX - r.left - r.width  / 2) * 0.35;
+      const y = (e.clientY - r.top  - r.height / 2) * 0.35;
+      this.style.transform = `translate(${x}px,${y}px)`;
+    });
+    btn.addEventListener('mouseleave', function() {
+      this.style.transform = '';
+    });
+  });
+
+  // ── Nav scroll reveal ──
+  const nav = document.querySelector('nav');
+  const onNavScroll = () => {
+    if (window.scrollY > 60) nav.classList.add('scrolled');
+    else nav.classList.remove('scrolled');
+  };
+  window.addEventListener('scroll', onNavScroll, { passive: true });
+  onNavScroll();
+
+  // ── Intro animation ──
+  (function() {
+    const intro   = document.getElementById('intro');
+    const letters = document.querySelectorAll('#intro-name .intro-letter');
+    letters.forEach((el, i) => setTimeout(() => el.classList.add('show'), 300 + i * 150));
     const exitDelay = 900 + letters.length * 85 + 900;
     setTimeout(() => {
       window.scrollTo(0, 0);
       intro.classList.add('hide');
-      setTimeout(() => { intro.style.display = 'none'; }, 1100);
+      setTimeout(() => {
+        intro.style.display = 'none';
+        // Trigger hero entrance
+        document.querySelector('.hero-inner') && document.querySelector('.hero-inner').classList.add('entered');
+      }, 1100);
     }, exitDelay);
   })();
 
-  // ---- Scroll reveal ----
-  const reveals = document.querySelectorAll('.reveal');
+  // ── Word split reveal ──
+  function splitWords(el) {
+    const words = el.textContent.trim().split(/\s+/);
+    el.innerHTML = words.map((w,i) =>
+      `<span class="word-reveal"><span class="word" style="transition-delay:${0.06*i}s">${w}</span></span>`
+    ).join(' ');
+  }
+  document.querySelectorAll('.section-title').forEach(splitWords);
+
+  // ── Scroll reveal ──
+  const revealEls = document.querySelectorAll('.reveal, .reveal-left');
   const obs = new IntersectionObserver((entries) => {
     entries.forEach((e, i) => {
       if (e.isIntersecting) {
-        setTimeout(() => e.target.classList.add('visible'), i * 80);
+        setTimeout(() => {
+          e.target.classList.add('visible');
+          // Animate words inside revealed element
+          e.target.querySelectorAll('.word').forEach(w => w.classList.add('show'));
+        }, i * 70);
         obs.unobserve(e.target);
       }
     });
-  }, { threshold: 0.1 });
-  reveals.forEach(el => obs.observe(el));
+  }, { threshold: 0.12 });
+  revealEls.forEach(el => obs.observe(el));
 
-  // ---- Stacking cards scroll effect ----
-  (function () {
+  // ── Stat counters ──
+  function animateCounter(el) {
+    const raw    = el.textContent.trim();
+    const suffix = raw.replace(/[0-9]/g, '');
+    const target = parseInt(raw);
+    if (isNaN(target)) return;
+    let start = null;
+    const dur = 1400;
+    function step(ts) {
+      if (!start) start = ts;
+      const p = Math.min((ts - start) / dur, 1);
+      const ease = 1 - Math.pow(1 - p, 3);
+      el.textContent = Math.round(ease * target) + suffix;
+      if (p < 1) requestAnimationFrame(step);
+    }
+    requestAnimationFrame(step);
+  }
+  const statObs = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) { animateCounter(e.target); statObs.unobserve(e.target); }
+    });
+  }, { threshold: 0.5 });
+  document.querySelectorAll('.stat-num').forEach(el => statObs.observe(el));
+
+  // ── Stacking cards scale ──
+  (function() {
     const cards = document.querySelectorAll('.stack-card');
     if (!cards.length) return;
-
     function onScroll() {
-      cards.forEach((card) => {
-        const rect = card.getBoundingClientRect();
-        const scrolled = -rect.top;
-        if (scrolled <= 0) {
-          card.querySelector('.stack-card-inner').style.transform = 'scale(1)';
-          return;
-        }
-        const progress = Math.min(scrolled / window.innerHeight, 1);
-        const scale = 1 - progress * 0.05;
-        card.querySelector('.stack-card-inner').style.transform = `scale(${scale.toFixed(4)})`;
-        card.querySelector('.stack-card-inner').style.transformOrigin = 'top center';
+      cards.forEach(card => {
+        const inner = card.querySelector('.stack-card-inner');
+        if (!inner) return;
+        const scrolled = -card.getBoundingClientRect().top;
+        if (scrolled <= 0) { inner.style.transform = ''; return; }
+        const p = Math.min(scrolled / window.innerHeight, 1);
+        inner.style.transform = `scale(${(1 - p * 0.05).toFixed(4)})`;
+        inner.style.transformOrigin = 'top center';
       });
     }
-
     window.addEventListener('scroll', onScroll, { passive: true });
     onScroll();
   })();
+
+  // ── Parallax on orbs ──
+  (function() {
+    const orbs = document.querySelectorAll('.orb');
+    window.addEventListener('scroll', () => {
+      const y = window.scrollY;
+      orbs.forEach((orb, i) => {
+        const speed = [0.12, -0.08, 0.06, -0.10][i] || 0.05;
+        orb.style.transform = `translateY(${y * speed}px)`;
+      });
+    }, { passive: true });
+  })();
+
+  // ── Smooth section links ──
+  document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', e => {
+      const target = document.querySelector(a.getAttribute('href'));
+      if (!target) return;
+      e.preventDefault();
+      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+  });
 </script>
 
 </body>
