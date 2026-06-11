@@ -22,19 +22,19 @@
     --orange: #FF9A5C;
     --pink: #FF4E8A;
     --amber: #FFB347;
-    --glass-bg: rgba(255, 255, 255, 0.55);
-    --glass-border: rgba(255, 117, 31, 0.2);
-    --glass-hover: rgba(255, 255, 255, 0.75);
-    --text-primary: #FF751F;
-    --text-secondary: rgba(255,100,0,0.7);
-    --text-muted: rgba(255,100,0,0.45);
+    --glass-bg: rgba(255, 255, 255, 0.07);
+    --glass-border: rgba(255, 255, 255, 0.14);
+    --glass-hover: rgba(255, 255, 255, 0.11);
+    --text-primary: #FFFAF3;
+    --text-secondary: rgba(255,255,255,0.6);
+    --text-muted: rgba(255,255,255,0.35);
   }
 
   html { scroll-behavior: smooth; }
 
   body {
     font-family: 'Inter', sans-serif;
-    background: #FFFAF3;
+    background: #FF751F;
     color: var(--text-primary);
     min-height: 100vh;
     overflow-x: hidden;
@@ -94,7 +94,7 @@
      BACKGROUND ORBS
   ===================== */
   .bg-orbs { position: fixed; inset: 0; pointer-events: none; z-index: 0; overflow: hidden; }
-  .orb { position: absolute; border-radius: 50%; filter: blur(100px); opacity: 0.15; }
+  .orb { position: absolute; border-radius: 50%; filter: blur(100px); opacity: 0.35; }
   .orb-1 { width: 600px; height: 600px; background: var(--rose); top: -150px; right: -100px; animation: drift1 18s ease-in-out infinite; }
   .orb-2 { width: 500px; height: 500px; background: var(--orange); bottom: 10%; left: -120px; animation: drift2 22s ease-in-out infinite; }
   .orb-3 { width: 350px; height: 350px; background: var(--pink); top: 40%; left: 40%; animation: drift3 26s ease-in-out infinite; }
@@ -119,7 +119,7 @@
   nav {
     position: fixed; top: 24px; left: 50%; transform: translateX(-50%);
     z-index: 100; padding: 10px 28px; display: flex; align-items: center; gap: 32px;
-    background: rgba(255,250,243,0.85); border: 1px solid var(--glass-border);
+    background: rgba(10,10,15,0.55); border: 1px solid var(--glass-border);
     backdrop-filter: blur(30px); -webkit-backdrop-filter: blur(30px); border-radius: 100px;
   }
   nav a { font-size: 13px; font-weight: 500; color: var(--text-secondary); text-decoration: none; letter-spacing: 0.02em; transition: color 0.2s; }
@@ -505,6 +505,10 @@
 </footer>
 
 <script>
+  // Force scroll to top — prevent browser scroll restoration from landing on wrong section
+  if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
+  window.scrollTo(0, 0);
+
   // ---- Intro animation ----
   (function () {
     const intro  = document.getElementById('intro');
@@ -518,6 +522,7 @@
     // 3. Slide intro up to reveal the site
     const exitDelay = 900 + letters.length * 85 + 900;
     setTimeout(() => {
+      window.scrollTo(0, 0);
       intro.classList.add('hide');
       setTimeout(() => { intro.style.display = 'none'; }, 1100);
     }, exitDelay);
