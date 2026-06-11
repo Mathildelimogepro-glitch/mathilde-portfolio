@@ -167,9 +167,23 @@
   .contact-inner .section-body { max-width: 460px; margin: 0 auto 40px; }
   .contact-links { display: flex; justify-content: center; gap: 14px; flex-wrap: wrap; }
 
-  .scroll-line { display: flex; flex-direction: column; align-items: center; gap: 8px; margin-top: 48px; }
-  .scroll-line span { font-size: 11px; color: var(--text-muted); letter-spacing: 0.08em; }
-  .scroll-line-bar { width: 1px; height: 48px; background: linear-gradient(to bottom, rgba(255,107,107,0.6), transparent); }
+  /* Scroll indicator */
+  .scroll-link {
+    display: flex; flex-direction: column; align-items: center; gap: 8px;
+    margin-top: 48px; text-decoration: none; cursor: pointer;
+    transition: opacity 0.2s;
+  }
+  .scroll-link:hover { opacity: 0.7; }
+  .scroll-link span {
+    font-size: 11px; color: var(--text-muted); letter-spacing: 0.08em; text-transform: uppercase;
+  }
+  .scroll-arrow {
+    animation: bounce 2s ease-in-out infinite;
+  }
+  @keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(6px); }
+  }
 
   footer { padding: 40px 0; text-align: center; }
   footer p { font-size: 12px; color: var(--text-muted); }
@@ -237,7 +251,13 @@
         <div><div class="stat-num">100%</div><div class="stat-label">Clients satisfaits</div></div>
       </div>
     </div>
-    <div class="scroll-line"><span>scroll</span><div class="scroll-line-bar"></div></div>
+    <a href="#about" class="scroll-link">
+      <span>scroll</span>
+      <svg class="scroll-arrow" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="rgba(255,107,107,0.7)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <line x1="12" y1="5" x2="12" y2="19"/>
+        <polyline points="19 12 12 19 5 12"/>
+      </svg>
+    </a>
   </div>
 </section>
 
