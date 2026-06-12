@@ -221,43 +221,42 @@ nav a:hover { color: var(--orange); }
   font-size: 15px; color: var(--mid); line-height: 1.8; font-weight: 300;
   border-left: 2px solid var(--orange); padding-left: 20px;
 }
-.services-list { display: flex; flex-direction: column; }
-.service-item {
-  display: grid; grid-template-columns: 60px 1fr auto;
-  align-items: center; gap: 32px;
-  padding: 28px 0; border-bottom: 1px solid var(--light);
-  cursor: default;
-  transition: background .2s;
+.services-list {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2px;
+  margin-top: 60px;
 }
-.service-item:first-child { border-top: 1px solid var(--light); }
+.service-item {
+  display: flex; flex-direction: column; justify-content: space-between;
+  gap: 24px; padding: 40px;
+  background: var(--ultra-light);
+  transition: background .3s;
+  cursor: default;
+}
+.service-item:hover { background: rgba(255,117,31,.07); }
 .service-num {
-  font-family: 'Syne', sans-serif; font-size: 12px; font-weight: 700;
-  color: rgba(255,117,31,.4); letter-spacing: .1em;
+  font-family: 'Inter', sans-serif; font-size: 11px; font-weight: 500;
+  color: rgba(255,117,31,.5); letter-spacing: .12em; text-transform: uppercase;
 }
 .service-name {
-  font-family: 'Syne', sans-serif; font-size: clamp(18px,2vw,26px);
-  font-weight: 700; letter-spacing: -0.01em; color: var(--dark);
-  transition: color .2s;
+  font-family: 'Barbra SemiCondensed', serif;
+  font-size: clamp(22px,2.4vw,34px);
+  font-weight: 400; letter-spacing: -0.01em; color: var(--dark);
+  line-height: 1.15;
 }
-.service-item:hover .service-name { color: var(--orange); }
 .service-tags {
-  display: flex; gap: 8px; flex-wrap: wrap; justify-content: flex-end;
+  display: flex; gap: 8px; flex-wrap: wrap;
 }
 .service-tag {
-  font-size: 11px; padding: 4px 12px; border-radius: 100px;
-  background: var(--ultra-light); border: 1px solid var(--light);
+  font-size: 11px; padding: 5px 14px; border-radius: 100px;
+  background: transparent; border: 1px solid var(--light);
   color: var(--mid); font-weight: 400;
-  transition: background .2s, border-color .2s;
+  transition: border-color .2s, color .2s;
 }
 .service-item:hover .service-tag {
-  background: rgba(255,117,31,.08); border-color: rgba(255,117,31,.2);
+  border-color: rgba(255,117,31,.3);
   color: var(--orange);
-}
-.service-arrow {
-  font-size: 18px; color: var(--orange); opacity: 0;
-  transform: translateX(-8px);
-  transition: opacity .2s, transform .2s;
-  position: absolute; right: 0;
 }
 .service-item { position: relative; padding-right: 40px; }
 .service-item:hover .service-arrow { opacity: 1; transform: translateX(0); }
@@ -515,41 +514,37 @@ footer p { font-size: 11px; color: rgba(26,14,4,.3); }
   <div class="services-list">
     <div class="service-item reveal">
       <span class="service-num">01</span>
-      <span class="service-name">Création web & e-commerce</span>
+      <span class="service-name">Création web<br>& e-commerce</span>
       <div class="service-tags">
         <span class="service-tag">Site vitrine</span>
         <span class="service-tag">Shopify</span>
         <span class="service-tag">WordPress</span>
       </div>
-      <span class="service-arrow">→</span>
     </div>
     <div class="service-item reveal">
       <span class="service-num">02</span>
-      <span class="service-name">Stratégie digitale & identité visuelle</span>
+      <span class="service-name">Stratégie digitale<br>& identité visuelle</span>
       <div class="service-tags">
         <span class="service-tag">Branding</span>
         <span class="service-tag">Charte graphique</span>
       </div>
-      <span class="service-arrow">→</span>
     </div>
     <div class="service-item reveal">
       <span class="service-num">03</span>
-      <span class="service-name">Plaquettes & supports print</span>
+      <span class="service-name">Plaquettes<br>& supports print</span>
       <div class="service-tags">
         <span class="service-tag">Flyer</span>
         <span class="service-tag">Brochure</span>
         <span class="service-tag">Affiche</span>
       </div>
-      <span class="service-arrow">→</span>
     </div>
     <div class="service-item reveal">
       <span class="service-num">04</span>
-      <span class="service-name">Réseaux sociaux & copywriting</span>
+      <span class="service-name">Réseaux sociaux<br>& copywriting</span>
       <div class="service-tags">
         <span class="service-tag">Stratégie éditoriale</span>
         <span class="service-tag">SEO</span>
       </div>
-      <span class="service-arrow">→</span>
     </div>
   </div>
 </section>
